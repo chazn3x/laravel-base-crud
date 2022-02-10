@@ -37277,8 +37277,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // Delete banner
 
 
-var banners = document.getElementsByClassName('banner');
-console.log(banners); // events
+var banners = document.getElementsByClassName('banner'); // events
 
 var closeBanner = function closeBanner() {
   var _iterator = _createForOfIteratorHelper(banners),
@@ -37296,18 +37295,31 @@ var closeBanner = function closeBanner() {
   }
 };
 
-window.addEventListener('click', closeBanner);
+window.addEventListener('click', closeBanner); // delete buttons
 
-var _iterator2 = _createForOfIteratorHelper(banners),
+var allButtons = document.getElementsByClassName('btn__delete'); // delete events
+
+var _iterator2 = _createForOfIteratorHelper(allButtons),
     _step2;
 
 try {
-  for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-    var banner = _step2.value;
-    banner.addEventListener('click', function (e) {
-      return e.stopPropagation();
+  var _loop = function _loop() {
+    var button = _step2.value;
+    button.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var id = button.attributes.data.nodeValue;
+      var banner = document.getElementById('banner-' + id);
+      banner.style.display = 'grid';
+      var bannerContent = document.getElementById('banner-content-' + id);
+      bannerContent.addEventListener('click', function (e) {
+        return e.stopPropagation();
+      });
     });
-  } // delete buttons
+  };
+
+  for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+    _loop();
+  } // close buttons
 
 } catch (err) {
   _iterator2.e(err);
@@ -37315,46 +37327,20 @@ try {
   _iterator2.f();
 }
 
-var allButtons = document.getElementsByClassName('btn__delete'); // delete events
+var closeButtons = document.getElementsByClassName('btn__close');
 
-var _iterator3 = _createForOfIteratorHelper(allButtons),
+var _iterator3 = _createForOfIteratorHelper(closeButtons),
     _step3;
 
 try {
-  var _loop = function _loop() {
-    var button = _step3.value;
-    button.addEventListener('click', function (e) {
-      e.stopPropagation();
-      var id = button.attributes.data.nodeValue;
-      var banner = document.getElementById('banner-' + id);
-      banner.style.display = 'grid';
-    });
-  };
-
   for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
-    _loop();
-  } // close buttons
-
+    var button = _step3.value;
+    button.addEventListener('click', closeBanner);
+  }
 } catch (err) {
   _iterator3.e(err);
 } finally {
   _iterator3.f();
-}
-
-var closeButtons = document.getElementsByClassName('btn__close');
-
-var _iterator4 = _createForOfIteratorHelper(closeButtons),
-    _step4;
-
-try {
-  for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
-    var button = _step4.value;
-    button.addEventListener('click', closeBanner);
-  }
-} catch (err) {
-  _iterator4.e(err);
-} finally {
-  _iterator4.f();
 }
 
 /***/ }),

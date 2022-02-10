@@ -33,7 +33,7 @@ All Comics
                     <button data="{{$comic->id}}" class="btn btn-danger btn__delete">Elimina</button>
                     {{-- Delete banner --}}
                     <div id="banner-{{$comic->id}}" class="banner">
-                        <div class="banner-content">
+                        <div id="banner-content-{{$comic->id}}" class="banner-content">
                             <div class="banner__header">
                                 <div class="row">
                                     <div class="col-11" id="delete-title-{{$comic->id}}">

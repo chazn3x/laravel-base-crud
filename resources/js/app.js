@@ -3,7 +3,6 @@ require('./bootstrap');
 
 // Delete banner
 const banners = document.getElementsByClassName('banner')
-console.log(banners);
 
 // events
 const closeBanner = () => {
@@ -12,9 +11,6 @@ const closeBanner = () => {
     }
 } 
 window.addEventListener('click', closeBanner)
-for (const banner of banners) {
-    banner.addEventListener('click', (e) => e.stopPropagation())
-}
 
 // delete buttons
 const allButtons = document.getElementsByClassName('btn__delete')
@@ -25,6 +21,8 @@ for (const button of allButtons) {
         const id = button.attributes.data.nodeValue
         const banner = document.getElementById('banner-' + id)
         banner.style.display = 'grid'
+        const bannerContent = document.getElementById('banner-content-' + id)
+        bannerContent.addEventListener('click', (e) => e.stopPropagation())
     })
 }
 // close buttons
