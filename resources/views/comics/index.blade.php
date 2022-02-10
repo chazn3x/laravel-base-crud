@@ -29,6 +29,15 @@ All Comics
                 <td>{{$comic->sale_date}}</td>
                 <td>{{$comic->price}}$</td>
                 <td class="text-capitalize">{{$comic->type}}</td>
+                <td><a href="{{route('comics.edit', $comic->id)}}"><button type="button" class="btn btn-primary">Modifica</button></a></td>
+                <td>
+                    <form action="{{route('comics.destroy', $comic->id)}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+
+                        <button type="submit" class="btn btn-danger">Elimina</button>
+                    </form>
+                </td>
             </tr>
         {{-- </a> --}}
         @endforeach
