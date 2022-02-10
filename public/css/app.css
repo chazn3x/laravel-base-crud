@@ -10971,3 +10971,42 @@ header {
   place-items: center;
 }
 
+body {
+  position: relative;
+}
+
+.banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  place-items: center;
+  display: none;
+}
+
+.banner-content {
+  width: 500px;
+  height: 300px;
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: 0 0 1rem 1rem rgba(0, 0, 0, 0.1);
+  color: black;
+  overflow: hidden;
+}
+
+.banner-content .delete-message {
+  font-size: 1rem;
+  margin: 2rem;
+}
+
+.banner__header {
+  color: white;
+  font-weight: bold;
+  font-size: 1.3rem;
+  padding: 1rem;
+  background-color: #3490dc;
+  width: 100%;
+}
+

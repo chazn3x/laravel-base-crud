@@ -16,5 +16,7 @@
     <main class="container mt-3">
         @yield('pageContent')
     </main>
+
+    <script src="{{asset('js/app.js')}}"></script>
 </body>
 </html>

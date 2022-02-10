@@ -21,7 +21,6 @@ All Comics
     </thead>
     <tbody>
         @foreach ($comics as $comic)
-        {{-- <a href="{{route('comics.show', $comic->id)}}"> --}}
             <tr>
                 <td scope="row">{{$comic->id}}</td>
                 <td><a href="{{route('comics.show', $comic->id)}}">{{$comic->title}}</a></td>
@@ -31,15 +30,35 @@ All Comics
                 <td class="text-capitalize">{{$comic->type}}</td>
                 <td><a href="{{route('comics.edit', $comic->id)}}"><button type="button" class="btn btn-primary">Modifica</button></a></td>
                 <td>
-                    <form action="{{route('comics.destroy', $comic->id)}}" method="POST">
-                        @csrf
-                        @method('DELETE')
-
-                        <button type="submit" class="btn btn-danger">Elimina</button>
-                    </form>
+                    <button data="{{$comic->id}}" class="btn btn-danger btn__delete">Elimina</button>
+                    {{-- Delete banner --}}
+                    <div id="banner-{{$comic->id}}" class="banner">
+                        <div class="banner-content">
+                            <div class="banner__header">
+                                <div class="row">
+                                    <div class="col-11" id="delete-title-{{$comic->id}}">
+                                        <span>{{$comic->title}}</span>
+                                    </div>
+                                    <div class="col-1">
+                                        <button type="button" class="close btn__close" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="delete-message">Sei sicuro di voler eliminare {{$comic->title}}?</p>
+                            <div class="d-flex m-5 justify-content-center">
+                                <button type="button" class="btn btn-primary mx-2 btn__close">Annulla</button>
+                                <form action="{{route('comics.destroy', $comic->id)}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger mx-2">Elimina</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </td>
             </tr>
-        {{-- </a> --}}
         @endforeach
     </tbody>
 </table>
